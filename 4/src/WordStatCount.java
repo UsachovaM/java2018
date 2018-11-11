@@ -15,14 +15,17 @@ public class WordStatCount {
                 while (matcher.find()) {
                     String w = matcher.group();
                     m.putIfAbsent(w, 0);
-                    m.put(w, m.get(w)+1);
+                    m.put(w, m.get(w) + 1);
                 }
             }
-        } catch (UnsupportedEncodingException e) {
+        }
+        catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         List<Map.Entry<String, Integer>> list = new LinkedList<>(m.entrySet());
@@ -31,9 +34,11 @@ public class WordStatCount {
             for (Map.Entry<String, Integer> entry : list) {
                 writer.println(entry.getKey() + " " + entry.getValue().toString());
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        }
+        catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
