@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Scanner;
 
 public class SumHexFile {
     public static void main(String[] args) {
@@ -17,28 +16,35 @@ public class SumHexFile {
                                 number = number.toLowerCase();
                                 if (number.startsWith("0x")) {
                                     sum += Integer.parseUnsignedInt(number.substring(2), 16);
-                                } else {
+                                }
+                                else {
                                     sum += Integer.parseInt(number, 10);
                                 }
                             }
-                        } catch (NumberFormatException e) {
+                        }
+                        catch (NumberFormatException e) {
                             System.err.println("Wrong number format");
                         }
                     }
                 }
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 System.err.println("File wasn't found");
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 System.err.println("Some problems with reading");
             }
             try (PrintWriter writer = new PrintWriter(args[1], "UTF-8")) {
                 writer.println(sum);
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 System.err.println("File " + out + " not found");
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 System.err.println("Some problems with writing");
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
             System.err.println("Not enough arguments");
         }
     }
